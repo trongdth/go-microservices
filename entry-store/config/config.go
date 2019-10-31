@@ -2,6 +2,7 @@ package config
 
 import (
 	"os"
+	"strconv"
 )
 
 var config *Config
@@ -9,12 +10,12 @@ var config *Config
 func init() {
 	env := os.Getenv("env")
 	db := os.Getenv("db")
-	secretKey := os.Getenv("token_secret_key")
+	port, _ := strconv.Atoi(os.Getenv("port"))
 
 	config = &Config{
-		Environment:    env,
-		Db:             db,
-		TokenSecretKey: secretKey,
+		Environment: env,
+		Db:          db,
+		Port:        port,
 	}
 }
 
@@ -24,7 +25,7 @@ func GetConfig() *Config {
 
 // Config : struct
 type Config struct {
-	Environment    string `json:"env"`
-	Db             string `json:"db"`
-	TokenSecretKey string `json:"token_secret_key"`
+	Environment string `json:"env"`
+	Port        int    `json:"port"`
+	Db          string `json:"db"`
 }

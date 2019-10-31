@@ -1,7 +1,6 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"log"
 	"net"
@@ -10,23 +9,23 @@ import (
 	"github.com/trongdth/go_microservices/entry-store/config"
 	"github.com/trongdth/go_microservices/entry-store/daos"
 	"github.com/trongdth/go_microservices/entry-store/servers"
-	pb "github.com/trongdth/go_protobuf/entry-store"
+	pb "github.com/trongdth/go_protobuf"
 	"google.golang.org/grpc"
 )
 
-var (
-	port = flag.Int("port", 10000, "The server port")
-)
-
 func main() {
-	lis, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", *port))
-	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
-	}
-
 	conf := config.GetConfig()
 	if err := daos.Init(conf); err != nil {
 		panic(err)
+	}
+
+	if err := daos.AutoMigrate(); err != nil {
+		log.Fatal("failed to auto migrate", err)
+	}
+
+	lis, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", conf.Port))
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
 	}
 
 	var opts []grpc.ServerOption

@@ -15,7 +15,7 @@ func Init(config *config.Config) (*gorm.DB, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "gorm.Open")
 	}
-	databaseConn = databaseConn.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4 COLLATE=utf8_unicode_ci auto_increment=1")
+	databaseConn = databaseConn.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci auto_increment=1")
 	// skip save associations of gorm -> manual save by code
 	databaseConn = databaseConn.Set("gorm:save_associations", false)
 	databaseConn = databaseConn.Set("gorm:association_save_reference", true)

@@ -16,16 +16,32 @@
   version = "v1.3.2"
 
 [[projects]]
-  branch = "master"
-  digest = "1:ddfbc77bbf539f3ccfa891a1c5ecf31dd6d6249d44f8bfa5ddd42bd2cfff761b"
-  name = "github.com/trongdth/go_protobuf"
-  packages = ["entry-store"]
+  digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
+  name = "github.com/pkg/errors"
+  packages = ["."]
   pruneopts = "UT"
-  revision = "e893ac8019c73e4b201b051ff632be1d455f349f"
+  revision = "ba968bfe8b2f7e042a574c888954fccecfa385b4"
+  version = "v0.8.1"
+
+[[projects]]
+  branch = "develop"
+  digest = "1:dd97ee53fe43cd3ff47ec18c4e62d2ad2e4e22f965bff376751510d66bfee375"
+  name = "github.com/tokoinofficial/tokoin_protobuf"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "bb64050cb0f059acfe0c2db8b549a7daa103d2f8"
 
 [[projects]]
   branch = "master"
-  digest = "1:0f7e2b539dc3bb2272b2ea9a53254e8021d2b97b1fdc247b20e9ffcb48974abb"
+  digest = "1:9cc4a9886ef179b57e0b07dae16ad9c8a804a5830648342394940e0f60bf49cf"
+  name = "github.com/trongdth/go_protobuf"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "cc8020cbd9bd5c64ca96dbff662a75ceb4801c5b"
+
+[[projects]]
+  branch = "master"
+  digest = "1:c21f1f304711b9da16a0aabaa6a2dd697576e9ef5ac0bbd806fed6998cb6c6d6"
   name = "golang.org/x/net"
   packages = [
     "http/httpguts",
@@ -36,15 +52,15 @@
     "trace",
   ]
   pruneopts = "UT"
-  revision = "491137f692577e390404f177a0515c9f86f79754"
+  revision = "fe3aa8a4527195a6057b3fad46619d7d090e99b5"
 
 [[projects]]
   branch = "master"
-  digest = "1:7c927f17d868be652a4cfe7de23e4292dea5b14d974a1d536e3b7cb7e79fd695"
+  digest = "1:999c8e6b10ddb08bc4ea3a56d4e838194c4884eac6ecf90a9aa98ed8475fdf37"
   name = "golang.org/x/sys"
   packages = ["unix"]
   pruneopts = "UT"
-  revision = "b09406accb4736d857a32bf9444cd7edae2ffa79"
+  revision = "f43be2a4598cf3a47be9f94f0c28197ed9eae611"
 
 [[projects]]
   digest = "1:8d8faad6b12a3a4c819a3f9618cb6ee1fa1cfc33253abeeea8b55336721e3405"
@@ -77,7 +93,7 @@
   name = "google.golang.org/genproto"
   packages = ["googleapis/rpc/status"]
   pruneopts = "UT"
-  revision = "548a555dbc03994223efbaba0090152849259498"
+  revision = "919d9bdd9fe6f1a5dd95ce5d5e4cdb8fd3c516d0"
 
 [[projects]]
   digest = "1:6cd77d0b616d2dcebd363dfecba593f27b0151fc82cdb5fbfb96c5a7cfbc95b5"
@@ -125,7 +141,9 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/trongdth/go_protobuf/entry-store",
+    "github.com/pkg/errors",
+    "github.com/tokoinofficial/tokoin_protobuf",
+    "github.com/trongdth/go_protobuf",
     "google.golang.org/grpc",
   ]
   solver-name = "gps-cdcl"

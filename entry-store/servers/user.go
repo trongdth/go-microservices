@@ -4,7 +4,9 @@ import (
 	"context"
 
 	"github.com/trongdth/go_microservices/entry-store/daos"
-	pb "github.com/trongdth/go_protobuf/entry-store"
+	pb "github.com/trongdth/go_protobuf"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // User : struct
@@ -21,19 +23,10 @@ func NewUserServer(ud *daos.User) *User {
 	}
 }
 
-// GetUser :
-func (u *User) GetUser(ctx context.Context, req *pb.UserReq) (*pb.UserRes, error) {
-	id := req.GetId()
+func (u *User) CreateUser(ctx context.Context, req *pb.UserReq) (*pb.UserRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
+}
 
-	user, err := u.ud.FindByID(uint(id))
-	if err != nil {
-		return nil, err
-	}
-
-	return &pb.UserRes{
-		Id:       uint32(user.ID),
-		FullName: user.FullName,
-		Email:    user.Email,
-		Username: user.UserName,
-	}, nil
+func (u *User) ReadUser(ctx context.Context, req *pb.UserReq) (*pb.UserRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReadUser not implemented")
 }

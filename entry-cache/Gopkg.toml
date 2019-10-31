@@ -26,6 +26,14 @@
 
 
 [[constraint]]
+  name = "github.com/pkg/errors"
+  version = "0.8.1"
+
+[[constraint]]
+  branch = "develop"
+  name = "github.com/tokoinofficial/tokoin_protobuf"
+
+[[constraint]]
   branch = "master"
   name = "github.com/trongdth/go_protobuf"
 

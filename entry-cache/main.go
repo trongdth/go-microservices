@@ -1,29 +1,32 @@
 package main
 
 import (
-	"context"
+	"fmt"
 	"log"
+	"net"
 
-	pb "github.com/trongdth/go_protobuf/entry-store"
+	"github.com/trongdth/go_microservices/entry-cache/config"
+	"github.com/trongdth/go_microservices/entry-cache/servers"
+	"github.com/trongdth/go_microservices/entry-cache/services"
+	pb "github.com/trongdth/go_protobuf"
 	"google.golang.org/grpc"
 )
 
-const (
-	address = "localhost:10000"
-)
-
 func main() {
-	// Set up a connection to the server.
-	conn, err := grpc.Dial(address, grpc.WithInsecure())
-	if err != nil {
-		log.Fatalf("did not connect: %v", err)
-	}
-	defer conn.Close()
-	c := pb.NewUserSrvClient(conn)
+	conf := config.GetConfig()
 
-	r, err := c.GetUser(context.Background(), &pb.UserReq{Id: 2})
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", conf.Port))
 	if err != nil {
-		log.Fatalf("could not greet: %v", err)
+		log.Fatalf("failed to listen: %v", err)
 	}
-	log.Println("Greeting: ", r.GetFullName(), r.GetEmail())
+
+	// init redis cache
+	// if err := daos.Init(conf); err != nil {
+	// 	panic(err)
+	// }
+
+	var opts []grpc.ServerOption
+	grpcServer := grpc.NewServer(opts...)
+	pb.RegisterUserSrvServer(grpcServer, servers.NewUserServer(services.NewUserSvc(conf)))
+	grpcServer.Serve(lis)
 }
