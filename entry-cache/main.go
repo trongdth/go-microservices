@@ -6,6 +6,7 @@ import (
 	"net"
 
 	"github.com/trongdth/go_microservices/entry-cache/config"
+	"github.com/trongdth/go_microservices/entry-cache/daos"
 	"github.com/trongdth/go_microservices/entry-cache/servers"
 	"github.com/trongdth/go_microservices/entry-cache/services"
 	pb "github.com/trongdth/go_protobuf"
@@ -20,10 +21,9 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 
-	// init redis cache
-	// if err := daos.Init(conf); err != nil {
-	// 	panic(err)
-	// }
+	if err := daos.Init(conf); err != nil {
+		panic(err)
+	}
 
 	var opts []grpc.ServerOption
 	grpcServer := grpc.NewServer(opts...)

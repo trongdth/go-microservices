@@ -2,6 +2,22 @@
 
 
 [[projects]]
+  digest = "1:b46f50677ef33284ebde2b285a42b707ff9e1de1f37328d91869859c929ebbd2"
+  name = "github.com/go-redis/redis"
+  packages = [
+    ".",
+    "internal",
+    "internal/consistenthash",
+    "internal/hashtag",
+    "internal/pool",
+    "internal/proto",
+    "internal/util",
+  ]
+  pruneopts = "UT"
+  revision = "7f69d5e32072d151eb6936cbe2306413e8117488"
+  version = "v6.15.6"
+
+[[projects]]
   digest = "1:f5ce1529abc1204444ec73779f44f94e2fa8fcdb7aca3c355b0c95947e4005c6"
   name = "github.com/golang/protobuf"
   packages = [
@@ -22,14 +38,6 @@
   pruneopts = "UT"
   revision = "ba968bfe8b2f7e042a574c888954fccecfa385b4"
   version = "v0.8.1"
-
-[[projects]]
-  branch = "develop"
-  digest = "1:dd97ee53fe43cd3ff47ec18c4e62d2ad2e4e22f965bff376751510d66bfee375"
-  name = "github.com/tokoinofficial/tokoin_protobuf"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "bb64050cb0f059acfe0c2db8b549a7daa103d2f8"
 
 [[projects]]
   branch = "master"
@@ -141,8 +149,8 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/go-redis/redis",
     "github.com/pkg/errors",
-    "github.com/tokoinofficial/tokoin_protobuf",
     "github.com/trongdth/go_protobuf",
     "google.golang.org/grpc",
   ]
