@@ -26,5 +26,6 @@ func (u *User) CreateUser(ctx context.Context, req *pb.UserReq) (*pb.UserRes, er
 
 // ReadUser : context, user request
 func (u *User) ReadUser(ctx context.Context, req *pb.UserReq) (*pb.UserRes, error) {
+
 	return u.userSvc.ReadUser(ctx, req)
 }
