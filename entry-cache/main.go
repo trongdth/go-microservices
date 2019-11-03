@@ -27,6 +27,6 @@ func main() {
 
 	var opts []grpc.ServerOption
 	grpcServer := grpc.NewServer(opts...)
-	pb.RegisterUserSrvServer(grpcServer, servers.NewUserServer(services.NewUserSvc(conf)))
+	pb.RegisterUserSrvServer(grpcServer, servers.NewUserServer(services.NewUserSvc(conf), daos.NewUser()))
 	grpcServer.Serve(lis)
 }

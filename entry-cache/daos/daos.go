@@ -15,8 +15,9 @@ var (
 // Init : init redis
 func Init(conf *config.Config) error {
 	var err error
-	redisClient := redis.NewClient(&redis.Options{
+	redisClient = redis.NewClient(&redis.Options{
 		Addr:     conf.Redis,
+		PoolSize: 10,
 		Password: conf.RedisPwd, // no password set
 		DB:       0,             // use default DB
 	})

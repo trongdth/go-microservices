@@ -1,5 +1,7 @@
 package daos
 
+import "encoding/json"
+
 // User : struct
 type User struct {
 }
@@ -10,11 +12,12 @@ func NewUser() *User {
 }
 
 // GetUser : id
-func (u *User) GetUser(ID uint) (interface{}, error) {
-	return redisClient.Get(string(ID)).Result()
+func (u *User) GetUser(ID uint32) (interface{}, error) {
+	return redisClient.Do("GET", string(ID)).Result()
 }
 
 // SetUser : key, user
-func (u *User) SetUser(key uint, user interface{}) error {
-	return redisClient.Set(string(key), user, 0).Err()
+func (u *User) SetUser(key uint32, user interface{}) error {
+	json, _ := json.Marshal(user)
+	return redisClient.Do("SET", string(key), json).Err()
 }
