@@ -1,4 +1,5 @@
 # go-microservices
+https://medium.com/@trongdth/go-microservice-api-gateways-pattern-185c2055ea00
 
 ## Requirements:
 
