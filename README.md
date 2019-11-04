@@ -10,6 +10,7 @@ https://medium.com/@trongdth/go-microservice-api-gateways-pattern-185c2055ea00
 
 ### System architecture:
 
+<img src="system_architecture.png"/>
 
 ### How to run:
 
